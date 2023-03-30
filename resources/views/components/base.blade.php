@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="{{ asset('recursos/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('recursos/bootstrap/js/jquery.min.js') }}"></script>
     <script src="{{ asset('recursos/bootstrap/js/bootstrap.min.js') }}"></script>
-
+    <style>
+        body{
+        background-color: #E5E4E4;
+    }
+    </style>
 </head>
 <body>
     {{ $slot }}

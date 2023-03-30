@@ -13,7 +13,8 @@
             <td><a href="{{route('formapagos.index')}}"><button class="btn btn-primary">Forma de Pago</button></a></td>
         </tr>
         <tr>
-            <td><button class="btn btn-primary">Usuario</button></td>
+            <td><a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo Usuarios</button></a></td>
         </tr>
+
     </table>
 </x-base>

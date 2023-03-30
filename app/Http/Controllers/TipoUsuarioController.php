@@ -1,20 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\TipoPago;
+
+use App\Models\Tipousuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
-class TipoPagoController extends Controller
+class TipoUsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tipopagos = TipoPago::all();
-        $colNames = Schema::getColumnListing('tipopagos');
-        return view('Catalogos/tipopagos.index', compact('tipopagos'), compact('colNames'));
+        $tipousuarios = Tipousuario::all();
+        $colNames = Schema::getColumnListing('tipousuarios');
+        return view('Catalogos/tipousuarios.index', compact('tipousuarios'), compact('colNames'));
     }
 
     /**
@@ -22,7 +23,7 @@ class TipoPagoController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -33,15 +34,15 @@ class TipoPagoController extends Controller
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
         ]);
-        TipoPago::create($attributes);
+        Tipousuario::create($attributes);
 
-        return redirect()->route('tipopagos.index')->with('success','Creado Correctamente');
+        return redirect()->route('tipousuarios.index')->with('success','Creado Correctamente');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(TipoPago $tipoPago)
+    public function show(Tipousuario $tipousuario)
     {
         //
     }
@@ -49,32 +50,33 @@ class TipoPagoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TipoPago $tipoPago)
+    public function edit(Tipousuario $tipousuario)
     {
-        //
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TipoPago $tipoPago)
+    public function update(Request $request, Tipousuario $tipousuario)
     {
+        /*dd($tipousuario);*/
+        /*d($tipousuario);*/
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
         ]);
 
-        $tipoPago->fill($attributes)->save();
+        $tipousuario->fill($attributes)->save();
 
-        return redirect()->route('tipopagos.index')->with('success','Editado Correctamente');
+        return redirect()->route('tipousuarios.index')->with('success','Editado Correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TipoPago $tipopago)
+    public function destroy(Tipousuario $tipousuario)
     {
-        $tipopago->delete();
+        $tipousuario->delete();
         return redirect()->route('tipousuarios.index')->with('success','Borrado Correctamente');
-
     }
 }

@@ -1,37 +1,51 @@
 <x-base>
 
-    <header style="background: #5E7AD7;">
-        <br>
-        <br>
-    </header>
+        <header style="background-color: #5E7AD7;">
+            <nav class="navbar bg-body-tertiary">
+              <div class="navbar-brand container-fluid">
+                <ul class="nav">
+                  <li class="nav-item">
+                    <a class="form-control me-2 bg-primary" href="catalogos"><i class="bi bi-arrow-90deg-left"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+      </header>
+
     <style>
         body{
             background-color: #E5E4E4;
         }
     </style>
-    <script>
-        let lastestId = -1;
-        function hideBtn(id, modify = false) {
-            hideShowModificationButtons(lastestId, false);
-            lastestId = id;
-            hideShowModificationButtons(id, modify);
+
+
+<script>
+    let lastestId = -1;
+    function hideBtn(id, modify = false) {
+        hideShowModificationButtons(id, false);
+        lastestId = id;
+
+        hideShowModificationButtons(lastestId, modify);
+
+    }
+
+    function hideShowModificationButtons(id, show = true) {
+        if (id < 0) {
+            return;
         }
 
-        function hideShowModificationButtons(id, show = true) {
-            if (id < 0) {
-                return;
-            }
+        document.getElementById('nombre-'+id).disabled = !show ? true : false;
+        document.getElementById('jefe-'+id).disabled = !show ? true : false;
+        document.getElementById('estado-'+id).disabled = !show ? true : false;
 
-            document.getElementById('nombre-'+id).disabled = !show ? true : false;
-            document.getElementById('jefe-'+id).disabled = !show ? true : false;
-            document.getElementById('estado-'+id).disabled = !show ? true : false;
+        document.getElementById('btn'+id+'-1').style.display = show ? "none" : "inline-block";
+        document.getElementById('btn'+id+'-2').style.display = show ? "inline-block" : "none";
+        document.getElementById('btn'+id+'-3').style.display = show ? "inline-block" : "none";
+    }
 
-            document.getElementById('btn'+id+'-1').style.display = show ? "none" : "inline-block";
-            document.getElementById('btn'+id+'-2').style.display = show ? "inline-block" : "none";
-            document.getElementById('btn'+id+'-3').style.display = show ? "inline-block" : "none";
-        }
+</script>
 
-    </script>
+
 
 <br>
 <hr>
@@ -50,10 +64,11 @@
             <tbody>
                 @foreach ($agencias as $agencia)
                     <tr>
-                        <form id="myform" method="POST" action="{{ route('agencias.update', $agencia->id) }}">
+                        <form id="myform{{$agencia->id}}" method="POST" action="{{ route('agencias.update', $agencia->id) }}">
                             @csrf
                             @method('PUT')
                             <td><p>{{$agencia->id}}</p></td>
+
                         <td><input id="{{ 'nombre-'.$agencia->id }}" type="text" class="form-control" name="nombre" value="{{$agencia->nombre}}" disabled></td>
                         <td><input id="{{ 'jefe-'.$agencia->id }}" type="text" class="form-control" name="jefe" value="{{$agencia->jefe}}" disabled></td>
                         <td>
@@ -67,8 +82,9 @@
 
                         <td>
                             <button id="{{ 'btn'.$agencia->id.'-1' }}" class="btn btn-warning" onclick="hideBtn({{ $agencia->id }}, true)"><i class="bi bi-pencil"></i></button>
-                            <button id="{{ 'btn'.$agencia->id.'-2' }}" form="myform" class="btn btn-success" onclick="hideBtn({{ $agencia->id }}, true)" style="display:none;"><i class="bi bi-check-lg"></i></button>
+                            <button id="{{ 'btn'.$agencia->id.'-2' }}" form="myform{{$agencia->id}}" class="btn btn-success" onclick="hideBtn({{ $agencia->id }}, true)" style="display:none;"><i class="bi bi-check-lg"></i></button>
                             <button id="{{ 'btn'.$agencia->id.'-3' }}" class="btn btn-danger" onclick="hideBtn({{ $agencia->id }})" style="display:none;"><i class="bi bi-x"></i></button>
+
                         </td>
                         <td class="text-center">
                             <form action="{{ route('agencias.destroy', $agencia->id) }}" method="POST" style="display: inline-block;">

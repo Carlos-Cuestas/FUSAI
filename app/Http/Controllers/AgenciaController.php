@@ -59,6 +59,7 @@ class AgenciaController extends Controller
      */
     public function update(Request $request, Agencia $agencia)
     {
+      
         $attributes = $request->validate([
             'nombre' => 'required|string|max:255',
             'jefe' => 'required|string|max:255',
