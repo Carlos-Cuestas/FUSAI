@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FormaPago;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class FormaPagoController extends Controller
 {
@@ -13,7 +14,8 @@ class FormaPagoController extends Controller
     public function index()
     {
         $formapagos = FormaPago::all();
-        return view('formapagos.index',compact('formapagos'));
+        
+        return view('Catalogos/formapagos.index',compact('formapagos'));
     }
 
     /**

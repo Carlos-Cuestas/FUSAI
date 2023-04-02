@@ -13,7 +13,8 @@ class TipoPagoController extends Controller
     public function index()
     {
         $tipopagos = TipoPago::all();
-        $colNames = Schema::getColumnListing('tipopagos');
+        $colNames = Schema::getColumnListing('tipo_pagos');
+        
         return view('Catalogos/tipopagos.index', compact('tipopagos'), compact('colNames'));
     }
 

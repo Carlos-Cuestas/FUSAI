@@ -68,7 +68,7 @@
 
                     <!-- Eliminar -->
                     <td class="text-center">
-                        <x-elimbut tabla="tipousuarios" id="{{$table->id}}"/>
+                        <x-elimbut tabla="{{$ruta}}" id="{{$table->id}}"/>
                     </td>
 
                 </tr>

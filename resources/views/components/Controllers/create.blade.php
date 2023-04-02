@@ -1,4 +1,5 @@
 @props(['ruta','nombrede'])
+
 <div class="container">
 
     <h1>Agregar {{$nombrede}}</h1>
@@ -13,6 +14,7 @@
                 <div class="form-group">
                     <label>{{ucfirst($name)}}</label>
                     <input type="text" class="form-control" name="{{$name}}">
+
                 </div>
             @endif
 

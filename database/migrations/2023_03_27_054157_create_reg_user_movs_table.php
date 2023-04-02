@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('Dia');
             $table->string('zona');
             $table->string('Tipo');
-            $table->foreignIdFor(User::class)->constrained();
+            
         });
     }
 

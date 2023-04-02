@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ModuloPago;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class ModuloPagosController extends Controller
 {
@@ -13,6 +14,8 @@ class ModuloPagosController extends Controller
     public function index()
     {
         $modulopagos = ModuloPago::all();
+        $colNames = Schema::getColumnListing('tipo_movimientos');
+        
         return view('Pagos/moduloPagos.index',compact('modulopagos'));
     }
 

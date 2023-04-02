@@ -1,4 +1,4 @@
-@props(['tipo','modo'=> null,'id'=> null])
+@props(['modo'=> null,'id'=> null])
 
 @if ($modo == 'js')
 @foreach ($attributes['miArray'] as $colName => $name)
