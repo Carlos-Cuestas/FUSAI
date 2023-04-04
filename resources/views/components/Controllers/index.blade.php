@@ -63,7 +63,7 @@
 
                     <!-- Editar -->
                     <td>
-                        <x-editelimbutt tipo="{{$name}}" modo="boton" id="{{$table->id}}"/>
+                        <x-editelimbutt modo="boton" id="{{$table->id}}"/>
                     </td>
 
                     <!-- Eliminar -->

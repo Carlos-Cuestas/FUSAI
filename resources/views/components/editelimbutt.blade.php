@@ -6,6 +6,8 @@
 
 <script>
     let lastestId = -1;
+    var datos = <?php echo json_encode($attributes['miArray']); ?>;;
+    
 
     function hideBtn(id, modify = false) {
         hideShowModificationButtons(id, false);
@@ -17,8 +19,13 @@
         if (id < 0) {
             return;
         }
-
-        document.getElementById("{{$name}}-"+id).disabled = !show ? true : false;
+        
+        datos.forEach(function(elemento) {
+        if(elemento != "id"){
+            document.getElementById(elemento+"-"+id).disabled = !show ? true : false;
+        }
+    }); 
+        
         /*document.getElementById('nombre-'+id).disabled = !show ? true : false;*/
         document.getElementById('btn'+id+'-1').style.display = show ? "none" : "inline-block";
         document.getElementById('btn'+id+'-2').style.display = show ? "inline-block" : "none";

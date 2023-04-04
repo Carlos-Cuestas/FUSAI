@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Caja</title>
     <link rel="icon" type="image/x-icon" href="cash-coin.ico" type="image/x-icon">
-    @vite('resources/js/app.js')
     <link rel="stylesheet" href="recursos/bootstrap/icon/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('recursos/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('recursos/bootstrap/js/jquery.min.js') }}"></script>

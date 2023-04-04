@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
             'apellido' =>'required|string|max:255',
