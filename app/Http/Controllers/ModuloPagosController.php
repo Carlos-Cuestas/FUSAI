@@ -14,9 +14,9 @@ class ModuloPagosController extends Controller
     public function index()
     {
         $modulopagos = ModuloPago::all();
-        $colNames = Schema::getColumnListing('tipo_movimientos');
+        $colNames = Schema::getColumnListing('modulo_pagos');
         
-        return view('Pagos/moduloPagos.index',compact('modulopagos'));
+        return view('Pagos/moduloPagos.index',compact('modulopagos','colNames'));
     }
 
     /**

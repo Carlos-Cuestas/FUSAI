@@ -1,20 +1,57 @@
 <x-base>
-    <table class="table container text-center">
-        <tr>
-            <td><a href="/"><button class="btn btn-danger">Regresar</button></a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('agencias.index')}}"><button class="btn btn-primary">Agencia</button></a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('tipopagos.index')}}"><button class="btn btn-primary">Tipo Pago</button></a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('formapagos.index')}}"><button class="btn btn-primary">Forma de Pago</button></a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo Usuarios</button></a></td>
-        </tr>
+<style>
+    section {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-    </table>
+.container {
+  width: 80%;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+button {
+  width: auto;
+  height: 50px;
+  margin: 5px;
+}
+
+   </style>
+
+    <x-header lugar="menu"/>
+
+    <section>
+    <div class="container">
+    <div class="menu">
+    <div class="text-center">
+    <a href="{{route('agencias.index')}}"><button class="btn btn-primary">Agencia</button></a>
+
+           <a href="{{route('tipopagos.index')}}"><button class="btn btn-primary">Tipo Pago</button></a>
+
+           <a href="{{route('formapagos.index')}}"><button class="btn btn-primary">Forma de Pago</button></a>
+
+           <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo Usuarios</button></a>
+           <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo Movimiento</button></a>
+           <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo Colector</button></a>
+           <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Colectores</button></a>
+           <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo de</button></a>
+    </div>
+    </div>
+  </div>
+    </section>
+
+
+          
+
+
+
 </x-base>

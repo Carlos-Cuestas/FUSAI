@@ -1,5 +1,5 @@
 <x-base>
-<x-header/>
+<x-header lugar="/catalogos"/>
 
 <x-editelimbutt :miArray="$colNames" modo="js"/>
 

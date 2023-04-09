@@ -26,8 +26,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('menu');
+    return view('login');
 });
+
+
+Route::get('/menu', function(){
+    return view('menu');
+})->name('menu');
 
 Route::get('/catalogos', function () {
     return view('catalogos');
@@ -36,6 +41,7 @@ Route::get('/catalogos', function () {
 Route::get('/pagos', function () {
     return view('pagos');
 });
+
 route::resource('agencias', AgenciaController::class);
 route::resource('tipousuarios',TipoUsuarioController::class);
 route::resource('tipoperfils', TipoPerfilController::class);

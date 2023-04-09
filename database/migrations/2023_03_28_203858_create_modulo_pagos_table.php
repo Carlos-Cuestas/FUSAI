@@ -1,6 +1,9 @@
 <?php
 
 use App\Models\Agencia;
+use App\Models\FormaPago;
+use App\Models\Tipocolector;
+use App\Models\TipoMovimiento;
 use App\Models\TipoPago;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,6 +20,11 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(TipoPago::class)->constrained();
             $table->foreignIdFor(Agencia::class)->constrained();
+            $table->foreignIdFor(Tipocolector::class)->constrained();
+            $table->foreignIdFor(TipoMovimiento::class)->constrained();
+            $table->foreignIdFor(FormaPago::class)->constrained();
+            $table->string('monto');
+            
         });
     }
 

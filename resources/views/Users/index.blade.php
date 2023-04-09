@@ -1,26 +1,32 @@
-<?php
+<!-- /*//<?php
+    
+   // function my_sort_function($value) {
+      
+      //      if ($value == 'contraseña') {
+    //          return 3;
+    //        } elseif($value == 'correo') {
+     //         return 6;
+     //       } elseif($value == 'id') {
+      //        return 0;
+      //      } elseif($value == 'nombre') {
+       //       return 1;
+       //     }elseif($value == 'agencia_id') {
+      //        return 4;
+      //      }elseif($value == 'tipo_usuario_id') {
+      //        return 7;
+      //      } else {
+      //          return 2;
+      //      }
 
-    function my_sort_function($value) {
-            if ($value == 'contraseña') {
-              return 3;
-            } elseif($value == 'correo') {
-              return 4;
-            } elseif($value == 'id') {
-                return 0;
-            } elseif($value == 'nombre') {
-                return 1;
-            } else {
-                return 2;
-            }
+      //    }
 
-          }
+      //    $mapped_array = array_map('my_sort_function', $colNames);
+     //     array_multisort($mapped_array, $colNames);
 
-          $mapped_array = array_map('my_sort_function', $colNames);
-          array_multisort($mapped_array, $colNames);
+//?>*/-->
 
-?>
 <x-base>
-    <x-header/>
+    <x-header lugar="/menu"/>
 
     <x-editelimbutt :miArray="$colNames" modo="js"/>
 

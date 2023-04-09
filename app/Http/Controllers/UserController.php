@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agencia;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -13,9 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::with('agencias')->get();
 
-        $colNames = Schema::getColumnListing('users');
+        $colNames = Schema::getColumnListing('users');        
         return view('users.index', compact('users','colNames'));
     }
 
@@ -38,8 +39,11 @@ class UserController extends Controller
             'apellido' =>'required|string|max:255',
             'contraseña' =>'required|string|max:255',
             'correo' =>'required|string|max:255',
+            'agencia_id' =>'required|numeric|exists:agencias,id',
+            'tipousuario_id' =>'required|numeric|exists:tipousuarios,id',
 
         ]);
+        dd($attributes);
         User::create($attributes);
 
         return redirect()->route('users.index')->with('success','Creado Correctamente');

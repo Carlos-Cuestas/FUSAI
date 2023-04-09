@@ -14,4 +14,8 @@ class Tipousuario extends Model
         'id'
     ];
 
+    public function users(){
+        return $this -> hasMany(User::class);
+    }
+
 }

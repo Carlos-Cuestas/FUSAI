@@ -21,6 +21,14 @@ class User extends Authenticatable
     protected $guarded = [
         'id'
     ];
+
+    public function agencias(){
+        return $this -> belongsTo(Agencia::class);
+    }
+
+    public function tipousuarios(){
+        return $this -> belongsTo(Tipousuario::class);
+    }
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.

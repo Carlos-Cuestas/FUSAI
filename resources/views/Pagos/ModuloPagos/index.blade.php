@@ -1,48 +1,20 @@
 <x-base>
-    <br><br><br>
-    <label for="">tipo colector</label>
-    <select name="" id="">
-        <option value="">cosas</option>
-    </select>
-    <br><br><br>
-    <label for="">movimento</label>
-    <select name="" id="">
-        <option value="">cosas</option>
-    </select>
-    <br><br><br>
-    <label for="">agencia</label>
-    <select name="" id="">
-        <option value="">cosas</option>
-    </select>
-    <br><br><br>
-    <label for="">forma pago</label>
-    <select name="" id="">
-        <option value="">cosas</option>
-    </select>
-    <br><br><br>
-    <label for="">tipo pago</label>
-    <select name="" id="">
-        <option value="">cosas</option>
-    </select>
-    <br><br>
+<x-header lugar="/catalogos"/>
 
-    <label for="">monto a pagar:</label>
-    <input type="text">
-    <br><br><br>
-    <button>Crear</button>
-    <hr>
-    <br>
-    <label for="">buscar por:</label><input type="text">
-    <hr>
-    <br>
-    <table>
-        <tr>
-            <th>cosa 1</th>
-            <th>cosa 2</th>
-        </tr>
-        <tr>
-            <td>asd</td>
-            <td>asd</td>
-        </tr>
-    </table>
+<x-editelimbutt :miArray="$colNames" modo="js"/>
+
+<br>
+<hr>
+
+<h1 class="text-center">Consulta</h1>
+
+<hr>
+
+<x-controllers.index :miArray="$colNames" :miArray2="$modulopagos" ruta="modulopagos"/>
+
+<br>
+<hr>
+<!-- Crear -->
+<x-controllers.create :miArray="$colNames" ruta="modulopagos" nombrede="Modulo Pago"/>
+
 </x-base>
