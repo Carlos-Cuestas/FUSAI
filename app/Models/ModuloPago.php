@@ -11,5 +11,19 @@ class ModuloPago extends Model
 
     public $timestapms = false;
 
-    
+    public function agencias(){
+        return $this -> belongsTo(Agencia::class);
+    }
+    public function tipomovimientos(){
+        return $this -> belongsTo(TipoMovimiento::class);
+    }
+    public function formapagos(){
+        return $this -> belongsTo(FormaPago::class);
+    }
+    public function tipopagos(){
+        return $this -> belongsTo(TipoPago::class);
+    }
+    public function tipocolectores(){
+        return $this -> belongsTo(Tipocolector::class);
+    }
 }

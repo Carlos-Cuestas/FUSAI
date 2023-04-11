@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FormaPago;
+use App\Models\TipoMovimiento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
-class FormaPagoController extends Controller
+class TipomovimientoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $formapagos = FormaPago::all();
-        $colNames = Schema::getColumnListing('forma_pagos');
-        return view('Catalogos/formapagos.index',compact('formapagos','colNames'));
+        $tipomovimientos = TipoMovimiento::all();
+        $colNames = Schema::getColumnListing('tipo_movimientos');
+        return view('Catalogos/tipomovimientos.index', compact('tipomovimientos', 'colNames'));
     }
 
     /**
@@ -34,23 +34,23 @@ class FormaPagoController extends Controller
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
         ]);
-        FormaPago::create($attributes);
+        TipoMovimiento::create($attributes);
 
-        return redirect()->route('formapagos.index')->with('success','Creado Correctamente');
+        return redirect()->route('tipomovimientos.index')->with('success','Creado Correctamente');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(FormaPago $formaPago)
+    public function show(TipoMovimiento $tipomovimiento)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FormaPago $formaPago)
+    public function edit(TipoMovimiento $tipoMovimiento)
     {
         //
     }
@@ -58,23 +58,23 @@ class FormaPagoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FormaPago $formaPago)
+    public function update(Request $request, TipoMovimiento $tipomovimiento)
     {
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
         ]);
 
-        $formaPago->fill($attributes)->save();
+        $tipomovimiento->fill($attributes)->save();
 
-        return redirect()->route('formapagos.index')->with('success','Editado Correctamente');
+        return redirect()->route('tipomovimientos.index')->with('success','Editado Correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FormaPago $formaPago)
+    public function destroy(TipoMovimiento $tipomovimiento)
     {
-        $formaPago->delete();
-        return redirect()->route('formapagos.index')->with('success','Borrado Correctamente');
+        $tipomovimiento->delete();
+        return redirect()->route('tipomovimientos.index')->with('success','Borrado Correctamente');
     }
 }

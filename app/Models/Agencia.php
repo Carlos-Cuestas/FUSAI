@@ -18,5 +18,7 @@ class Agencia extends Model
         return $this -> hasMany(User::class);
     }
 
-
+    public function modulopagos(){
+        return $this -> hasMany(ModuloPago::class);
+    }
 }

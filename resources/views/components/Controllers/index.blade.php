@@ -2,10 +2,11 @@
 <x-alert/>
 <div class="text-center" style="width: 38rem;display: flex;justify-content: center;margin:auto;">
 
+
     <table class="table table-warning table-striped">
 
         <thead>
-                
+
             @foreach ($attributes['miArray'] as $colName)
                 <th>{{ ucfirst($colName) }}</th>
             @endforeach
@@ -25,18 +26,24 @@
                         @method('PUT')
 
                         
+
                         <!-- Mostrar Select -->
                         @foreach ($attributes['miArray'] as $colName => $name)
 
                             @if ($colName >= 0)
 
                             @if ($name == 'id')
-                                <td>{{$name}}</td>
+                                <td>{{$table->id}}</td>
+                            @elseif (strpos($name, "id"))
+                            <td><input id="{{ $name.'-'.$table->id }}" type="text" name="{{$name}}" value="{{$table->agencia->nombre}}" disabled></td>
                             @else
 
                                 <td><input id="{{ $name.'-'.$table->id }}" type="text" name="{{$name}}" value="{{$table->$name}}" disabled></td>
 
                             @endif
+
+
+
 
                             <!--
                             @elseif ($table)

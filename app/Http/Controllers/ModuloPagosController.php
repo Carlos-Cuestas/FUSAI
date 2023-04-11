@@ -15,8 +15,8 @@ class ModuloPagosController extends Controller
     {
         $modulopagos = ModuloPago::all();
         $colNames = Schema::getColumnListing('modulo_pagos');
-        
-        return view('Pagos/moduloPagos.index',compact('modulopagos','colNames'));
+
+        return view('Pagos/modulopagos.index',compact('modulopagos','colNames'));
     }
 
     /**
@@ -32,13 +32,26 @@ class ModuloPagosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $attributes = $request->validate([
+            'monto' =>'required|numeric',
+            'agencia_id' =>'required|numeric|exists:agencias,id',
+            'tipo_pago_id' =>'required|numeric|exists:tipo_pagos,id',
+            'tipomovimiento_id' =>'required|numeric|exists:tipomovimientos,id',
+            'formapago_id' =>'required|numeric|exists:formapagos,id',
+            'tipocolector_id' =>'required|numeric|exists:tipocolectors,id',
+        ]);
+
+        ModuloPago::create($attributes);
+
+        return redirect()->route('modulopagos.index')->with('success','Creado Correctamente');
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(ModuloPago $moduloPago)
+    public function show(ModuloPago $modulopago)
     {
         //
     }
@@ -46,7 +59,7 @@ class ModuloPagosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ModuloPago $moduloPago)
+    public function edit(ModuloPago $modulopago)
     {
         //
     }
@@ -54,16 +67,29 @@ class ModuloPagosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ModuloPago $moduloPago)
+    public function update(Request $request, ModuloPago $modulopago)
     {
-        //
+        $attributes = $request->validate([
+            'monto' =>'required|numeric',
+            'agencia_id' =>'required|numeric|exists:agencias,id',
+            'tipo_pago_id' =>'required|numeric|exists:tipo_pagos,id',
+            'tipomovimiento_id' =>'required|numeric|exists:tipomovimientos,id',
+            'formapago_id' =>'required|numeric|exists:formapagos,id',
+            'tipocolector_id' =>'required|numeric|exists:tipocolectors,id',
+
+        ]);
+
+        $modulopago->fill($attributes)->save();
+
+        return redirect()->route('modulopagos.index')->with('success','Editado Correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ModuloPago $moduloPago)
+    public function destroy(ModuloPago $modulopago)
     {
-        //
+        $modulopago->delete();
+        return redirect()->route('modulopagos.index')->with('success','Borrado Correctamente');
     }
 }

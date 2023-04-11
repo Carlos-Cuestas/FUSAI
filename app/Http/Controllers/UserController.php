@@ -14,10 +14,18 @@ class UserController extends Controller
      */
     public function index()
     {
+        return view('users.index',[
+            'users' => User::all()->load('agencia'),
+            'agencias' => Agencia::all(),
+            'colNames' => Schema::getColumnListing('users'),
+
+        ]);
+/*
         $users = User::with('agencias')->get();
 
-        $colNames = Schema::getColumnListing('users');        
+        $colNames = Schema::getColumnListing('users');
         return view('users.index', compact('users','colNames'));
+*/
     }
 
     /**
@@ -33,7 +41,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
             'apellido' =>'required|string|max:255',
@@ -43,7 +51,6 @@ class UserController extends Controller
             'tipousuario_id' =>'required|numeric|exists:tipousuarios,id',
 
         ]);
-        dd($attributes);
         User::create($attributes);
 
         return redirect()->route('users.index')->with('success','Creado Correctamente');
@@ -70,7 +77,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        
+
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
             'apellido' =>'required|string|max:255',

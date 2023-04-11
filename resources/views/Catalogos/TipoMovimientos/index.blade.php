@@ -10,13 +10,12 @@
 
     <hr>
 
-    <x-controllers.index :miArray="$colNames" :miArray2="$tipopagos" ruta="tipopagos"/>
+    <x-controllers.index :miArray="$colNames" :miArray2="$tipomovimientos" ruta="tipomovimientos"/>
 
     <br>
     <hr>
     <!-- Crear -->
-    <x-controllers.create :miArray="$colNames" ruta="tipopagos" nombrede="Tipo Pagos" />
-
-
+    <x-controllers.create :miArray="$colNames" ruta="tipomovimientos" nombrede="Tipo Movimiento"/>
 
     </x-base>
+

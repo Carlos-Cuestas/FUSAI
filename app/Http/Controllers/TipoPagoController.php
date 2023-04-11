@@ -14,7 +14,7 @@ class TipoPagoController extends Controller
     {
         $tipopagos = TipoPago::all();
         $colNames = Schema::getColumnListing('tipo_pagos');
-        
+
         return view('Catalogos/tipopagos.index', compact('tipopagos'), compact('colNames'));
     }
 
@@ -42,7 +42,7 @@ class TipoPagoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TipoPago $tipoPago)
+    public function show(TipoPago $tipopago)
     {
         //
     }
@@ -50,7 +50,7 @@ class TipoPagoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TipoPago $tipoPago)
+    public function edit(TipoPago $tipopago)
     {
         //
     }
@@ -58,13 +58,13 @@ class TipoPagoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TipoPago $tipoPago)
+    public function update(Request $request, TipoPago $tipopago)
     {
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
         ]);
 
-        $tipoPago->fill($attributes)->save();
+        $tipopago->fill($attributes)->save();
 
         return redirect()->route('tipopagos.index')->with('success','Editado Correctamente');
     }
@@ -75,7 +75,7 @@ class TipoPagoController extends Controller
     public function destroy(TipoPago $tipopago)
     {
         $tipopago->delete();
-        return redirect()->route('tipousuarios.index')->with('success','Borrado Correctamente');
+        return redirect()->route('tipopagos.index')->with('success','Borrado Correctamente');
 
     }
 }

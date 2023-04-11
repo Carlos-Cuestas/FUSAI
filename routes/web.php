@@ -4,6 +4,8 @@ use App\Http\Controllers\AgenciaController;
 use App\Http\Controllers\CatalogoColectorController;
 use App\Http\Controllers\FormaPagoController;
 use App\Http\Controllers\ModuloPagosController;
+use App\Http\Controllers\TipocolectorController;
+use App\Http\Controllers\TipomovimientoController;
 use App\Http\Controllers\TipoPagoController;
 use App\Http\Controllers\TipoPerfilController;
 use App\Http\Controllers\TipoUsuarioController;
@@ -27,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
 
 
 Route::get('/menu', function(){
@@ -50,3 +52,5 @@ route::resource('tipopagos', TipoPagoController::class);
 route::resource('catalogocolectores', CatalogoColectorController::class);
 route::resource('modulopagos', ModuloPagosController::class);
 route::resource('users', UserController::class);
+route::resource('tipomovimientos', TipomovimientoController::class);
+route::resource('tipocolectores', TipocolectorController::class);

@@ -40,8 +40,8 @@ button {
            <a href="{{route('formapagos.index')}}"><button class="btn btn-primary">Forma de Pago</button></a>
 
            <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo Usuarios</button></a>
-           <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo Movimiento</button></a>
-           <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo Colector</button></a>
+           <a href="{{route('tipomovimientos.index')}}"><button class="btn btn-primary">Tipo Movimiento</button></a>
+           <a href="{{route('tipocolectores.index')}}"><button class="btn btn-primary">Tipo Colector</button></a>
            <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Colectores</button></a>
            <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo de</button></a>
     </div>
@@ -50,7 +50,7 @@ button {
     </section>
 
 
-          
+
 
 
 

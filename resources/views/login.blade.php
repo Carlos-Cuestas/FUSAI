@@ -59,21 +59,22 @@ button[type="submit"]:hover {
 </style>
 
 <div class="container">
-    <form class="login-form">
+
+    <form class="login-form" action="{{route('menu')}}">
       <h2>Iniciar sesión</h2>
       <div class="form-group">
         <label for="username">Nombre de usuario:</label>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" name="username" value="admin">
       </div>
       <div class="form-group">
         <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password">
       </div>
-      <button type="submit">Enviar</button>
-      
+      <button type="submit">Iniciar sesion</button>
+
     </form>
-    <a href="{{route('menu')}}"><button class="btn btn-secondary">Iniciar sesion</button></a>
+
   </div>
 
-   
+
 </x-base>

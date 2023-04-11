@@ -21,8 +21,16 @@ class User extends Authenticatable
     protected $guarded = [
         'id'
     ];
-
-    public function agencias(){
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    public function agencia(){
         return $this -> belongsTo(Agencia::class);
     }
 
