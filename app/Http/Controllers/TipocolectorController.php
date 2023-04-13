@@ -16,6 +16,7 @@ class TipocolectorController extends Controller
     {
         return view('Catalogos/tipocolectores.index', [
             'tipocolectores' => Tipocolector::all()->load('tipopago'),
+            'tipopagos' => TipoPago::all(),
             'colNames' => Schema::getColumnListing('tipocolectors'),
         ]);
     }

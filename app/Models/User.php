@@ -18,26 +18,20 @@ class User extends Authenticatable
      * Summary of timestamp
      * @var
      */
+    public $timestamps = false;
     protected $guarded = [
         'id'
     ];
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+
+
     public function agencia(){
         return $this -> belongsTo(Agencia::class);
     }
 
-    public function tipousuarios(){
+    public function tipousuario(){
         return $this -> belongsTo(Tipousuario::class);
     }
-    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *

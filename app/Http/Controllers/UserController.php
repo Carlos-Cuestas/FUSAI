@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agencia;
+use App\Models\Tipousuario;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -15,8 +16,9 @@ class UserController extends Controller
     public function index()
     {
         return view('users.index',[
-            'users' => User::all()->load('agencia'),
+            'users' => User::all()->load('agencia','tipousuario'),
             'agencias' => Agencia::all(),
+            'tipousuarios' => Tipousuario::all(),
             'colNames' => Schema::getColumnListing('users'),
 
         ]);
@@ -51,6 +53,7 @@ class UserController extends Controller
             'tipousuario_id' =>'required|numeric|exists:tipousuarios,id',
 
         ]);
+
         User::create($attributes);
 
         return redirect()->route('users.index')->with('success','Creado Correctamente');
@@ -81,8 +84,10 @@ class UserController extends Controller
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
             'apellido' =>'required|string|max:255',
-            'correo' =>'required|string|max:255',
             'contraseña' =>'required|string|max:255',
+            'correo' =>'required|string|max:255',
+            'agencia_id' =>'required|numeric|exists:agencias,id',
+            'tipousuario_id' =>'required|numeric|exists:tipousuarios,id',
 
         ]);
 

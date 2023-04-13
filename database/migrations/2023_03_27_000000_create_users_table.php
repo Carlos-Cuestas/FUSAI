@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('correo');
-            $table->string('contraseña');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->foreignIdFor(Agencia::class)->constrained();
             $table->foreignIdFor(Tipousuario::class)->constrained();
         });

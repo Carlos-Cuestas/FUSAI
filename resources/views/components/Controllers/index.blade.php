@@ -1,5 +1,7 @@
-@props(['ruta'])
+@props(['ruta','max'=>null])
+
 <x-alert/>
+
 <div class="text-center" style="width: 38rem;display: flex;justify-content: center;margin:auto;">
 
 
@@ -8,7 +10,13 @@
         <thead>
 
             @foreach ($attributes['miArray'] as $colName)
+            @if (substr($colName, -3) == '_id')
+
+                <th>{{ ucfirst(str_replace(["_id"], "", $colName)) }}</th>
+            @else
                 <th>{{ ucfirst($colName) }}</th>
+            @endif
+
             @endforeach
 
             <th>Editar</th>
@@ -17,7 +25,7 @@
         </thead>
 
         <tbody>
-
+            <?php $i = 3; ?>
             <!-- Mostrar -->
             @foreach ($attributes['miArray2'] as $table)
                 <tr>
@@ -25,22 +33,58 @@
                         @csrf
                         @method('PUT')
 
-                        
+
 
                         <!-- Mostrar Select -->
                         @foreach ($attributes['miArray'] as $colName => $name)
 
                             @if ($colName >= 0)
 
-                            @if ($name == 'id')
-                                <td>{{$table->id}}</td>
-                            @elseif (strpos($name, "id"))
-                            <td><input id="{{ $name.'-'.$table->id }}" type="text" name="{{$name}}" value="{{$table->agencia->nombre}}" disabled></td>
-                            @else
+                                @if ($name == 'id')
+                                    <td>{{$table->id}}</td>
+                                @elseif (substr($name, -2) == 'id')
 
-                                <td><input id="{{ $name.'-'.$table->id }}" type="text" name="{{$name}}" value="{{$table->$name}}" disabled></td>
+                                       <!--// /*<?php
+                                       // $nombre = $name;
+                                       // $correc = str_replace(["_id"], "", $nombre);
 
-                            @endif
+                                       // $value = $table->{$correc}->nombre;
+
+                                       // echo '<td><input id="' . $name . '-' . $table->id . '" type="text" name="' . $name . '" value="' . $value . '" disabled></td>';
+                                       // ?>*/-->
+                                        <td>
+
+                                            <select name="{{$name}}"  id="{{ $name.'-'.$table->id }}" class="form-select w-auto" disabled>
+
+                                                    @foreach ($attributes['miArray'.$i] as $agencia)
+
+                                                        <option value="{{ $agencia->id }}" {!! $table->$name == $agencia->id ? 'selected' : '' !!}>{{ $agencia->nombre }}</option>
+
+                                                    @endforeach
+
+
+                                            </select>
+                                            <a href="#" class="link">mostrar</a>
+                                            <?php
+                                                if ($i==$max) {
+                                                     $i =3;
+                                                }else {
+                                                    $i +=1;
+                                                }
+
+
+                                            ?>
+
+
+
+                                        </td>
+
+
+                                @else
+
+                                        <td><input id="{{ $name.'-'.$table->id }}" type="text" name="{{$name}}" value="{{$table->$name}}" disabled></td>
+
+                                @endif
 
 
 

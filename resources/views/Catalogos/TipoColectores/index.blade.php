@@ -37,12 +37,12 @@
 
     <hr>
 
-    <x-controllers.index :miArray="$colNames" :miArray2="$tipocolectores" ruta="tipocolectores"/>
+    <x-controllers.index :miArray="$colNames" :miArray2="$tipocolectores" :miArray3="$tipopagos" ruta="tipocolectores" max="3"/>
 
     <br>
     <hr>
     <!-- Crear -->
-    <x-controllers.create :miArray="$colNames" ruta="tipocolectores" nombrede="Tipo Colector"/>
+    <x-controllers.create :miArray="$colNames" ruta="tipocolectores" :miArray3="$tipocolectores" nombrede="Tipo Colector"/>
 
     </x-base>
 

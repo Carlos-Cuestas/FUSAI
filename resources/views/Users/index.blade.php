@@ -4,16 +4,16 @@
 
             if ($value == 'contraseña') {
               return 3;
-            } elseif($value == 'tipo_usuario_id') {
+            } elseif($value == 'tipousuario_id') {
               return 6;
             } elseif($value == 'id') {
               return 0;
             } elseif($value == 'nombre') {
               return 1;
             }elseif($value == 'agencia_id') {
-              return 4;
-            }elseif($value == 'correo') {
               return 7;
+            }elseif($value == 'correo') {
+              return 4;
             } else {
                 return 2;
             }
@@ -27,11 +27,6 @@
 
 <x-base>
 
-    @foreach ($users as $user)
-        {{$user->agencia->nombre}}
-    @endforeach
-
-
     <x-header lugar="/menu"/>
 
     <x-editelimbutt :miArray="$colNames" modo="js"/>
@@ -43,11 +38,11 @@
 
     <hr>
 
-    <x-controllers.index :miArray="$colNames" :miArray2="$users" ruta="users"/>
+    <x-controllers.index :miArray="$colNames" :miArray2="$users" :miArray3="$tipousuarios" :miArray4="$agencias" max="4" ruta="users"/>
 
     <br>
     <hr>
     <!-- Crear -->
-    <x-controllers.create :miArray="$colNames" ruta="users" nombrede="Usuario"/>
+    <x-controllers.create :miArray="$colNames" :miArray2="$users" :miArray4="$agencias" :miArray3="$tipousuarios" ruta="users" nombrede="Usuario"/>
 
     </x-base>
