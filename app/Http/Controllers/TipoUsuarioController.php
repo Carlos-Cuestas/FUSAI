@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RegUserMov;
 use App\Models\Tipousuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -62,6 +63,13 @@ class TipoUsuarioController extends Controller
     {
         /*dd($tipousuario);*/
         /*d($tipousuario);*/
+        $attributes = $request->validate([
+            'Dia' =>'required|date',
+            'zona' =>'required|string|max:255',
+            'Tipo' =>'required|string|max:255',
+        ]);
+        RegUserMov::create($attributes);
+
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
         ]);

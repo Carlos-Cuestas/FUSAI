@@ -42,8 +42,6 @@ button {
            <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo Usuarios</button></a>
            <a href="{{route('tipomovimientos.index')}}"><button class="btn btn-primary">Tipo Movimiento</button></a>
            <a href="{{route('tipocolectores.index')}}"><button class="btn btn-primary">Tipo Colector</button></a>
-           <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Colectores</button></a>
-           <a href="{{route('tipousuarios.index')}}"><button class="btn btn-primary">Tipo de</button></a>
     </div>
     </div>
   </div>

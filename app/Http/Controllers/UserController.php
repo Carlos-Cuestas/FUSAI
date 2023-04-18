@@ -16,7 +16,10 @@ class UserController extends Controller
     public function index()
     {
         return view('users.index',[
-            'users' => User::all()->load('agencia','tipousuario'),
+            'users' => User::all()->load('agencia','tipousuario')->map(function ($user) {
+                $user->passwordToNull();
+                return $user;
+            }),
             'agencias' => Agencia::all(),
             'tipousuarios' => Tipousuario::all(),
             'colNames' => Schema::getColumnListing('users'),
@@ -47,8 +50,8 @@ class UserController extends Controller
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
             'apellido' =>'required|string|max:255',
-            'contraseña' =>'required|string|max:255',
-            'correo' =>'required|string|max:255',
+            'password' =>'required|string|max:255',
+            'email' =>'required|string|max:255',
             'agencia_id' =>'required|numeric|exists:agencias,id',
             'tipousuario_id' =>'required|numeric|exists:tipousuarios,id',
 
@@ -80,18 +83,26 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-
         $attributes = $request->validate([
             'nombre' =>'required|string|max:255',
             'apellido' =>'required|string|max:255',
-            'contraseña' =>'required|string|max:255',
-            'correo' =>'required|string|max:255',
+            'email' =>'required|string|max:255',
             'agencia_id' =>'required|numeric|exists:agencias,id',
             'tipousuario_id' =>'required|numeric|exists:tipousuarios,id',
 
         ]);
 
-        $user->fill($attributes)->save();
+        $user->fill($attributes);
+
+        if($request->get('password') != null) {
+            $passwordAttribute = $request->validate([
+                'password' =>'string|max:255',
+            ]);
+
+            $user->fill($passwordAttribute);
+        }
+
+        $user->save();
 
         return redirect()->route('users.index')->with('success','Editado Correctamente');
     }

@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agencia;
+use App\Models\FormaPago;
 use App\Models\ModuloPago;
+use App\Models\Tipocolector;
+use App\Models\TipoMovimiento;
+use App\Models\TipoPago;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -13,10 +18,15 @@ class ModuloPagosController extends Controller
      */
     public function index()
     {
-        $modulopagos = ModuloPago::all();
-        $colNames = Schema::getColumnListing('modulo_pagos');
-
-        return view('Pagos/modulopagos.index',compact('modulopagos','colNames'));
+        return view('Pagos/modulopagos.index', [
+            'modulopagos' => ModuloPago::all()->load('tipopagos'),
+            'tipopagos' => TipoPago::all(),
+            'agencias' => Agencia::all(),
+            'tipocolectores' => Tipocolector::all(),
+            'tipomovimientos' => TipoMovimiento::all(),
+            'formapagos' => FormaPago::all(),
+            'colNames' => Schema::getColumnListing('modulo_pagos'),
+        ]);
     }
 
     /**
@@ -37,8 +47,8 @@ class ModuloPagosController extends Controller
             'monto' =>'required|numeric',
             'agencia_id' =>'required|numeric|exists:agencias,id',
             'tipo_pago_id' =>'required|numeric|exists:tipo_pagos,id',
-            'tipomovimiento_id' =>'required|numeric|exists:tipomovimientos,id',
-            'formapago_id' =>'required|numeric|exists:formapagos,id',
+            'tipo_movimiento_id' =>'required|numeric|exists:tipo_movimientos,id',
+            'forma_pago_id' =>'required|numeric|exists:forma_pagos,id',
             'tipocolector_id' =>'required|numeric|exists:tipocolectors,id',
         ]);
 
@@ -73,8 +83,8 @@ class ModuloPagosController extends Controller
             'monto' =>'required|numeric',
             'agencia_id' =>'required|numeric|exists:agencias,id',
             'tipo_pago_id' =>'required|numeric|exists:tipo_pagos,id',
-            'tipomovimiento_id' =>'required|numeric|exists:tipomovimientos,id',
-            'formapago_id' =>'required|numeric|exists:formapagos,id',
+            'tipo_movimiento_id' =>'required|numeric|exists:tipo_movimientos,id',
+            'forma_pago_id' =>'required|numeric|exists:forma_pagos,id',
             'tipocolector_id' =>'required|numeric|exists:tipocolectors,id',
 
         ]);

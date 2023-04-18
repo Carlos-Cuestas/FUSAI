@@ -42,7 +42,7 @@
     <br>
     <hr>
     <!-- Crear -->
-    <x-controllers.create :miArray="$colNames" ruta="tipocolectores" :miArray3="$tipocolectores" nombrede="Tipo Colector"/>
+    <x-controllers.create :miArray="$colNames" ruta="tipocolectores" :miArray2="$tipocolectores" :miArray3="$tipopagos" nombrede="Tipo Colector" max="3"/>
 
     </x-base>
 

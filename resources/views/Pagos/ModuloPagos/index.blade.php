@@ -22,7 +22,6 @@
 
           $mapped_array = array_map('my_sort_function', $colNames);
           array_multisort($mapped_array, $colNames);
-
 ?>
 
 <x-base>
@@ -45,11 +44,19 @@ foreach ($modulopagos as $key) {
 }
 echo "<h1 style=\"text-align: center\">Dinero en Caja: $val$</h1>";
 ?>
-<x-controllers.index :miArray="$colNames" :miArray2="$modulopagos" ruta="modulopagos"/>
+
+<form action="/recibo">
+<div style="text-align: center">
+    <button type="submit" class="btn btn-secondary" >Recibo</button>
+</div>
+<br>
+</form>
+
+<x-controllers.index :miArray="$colNames" :miArray2="$modulopagos"  :miArray3="$agencias" :miArray4="$formapagos" :miArray5="$tipomovimientos" :miArray6="$tipocolectores" :miArray7="$tipopagos" ruta="modulopagos" max="7"/>
 
 <br>
 <hr>
 <!-- Crear -->
-<x-controllers.create :miArray="$colNames" ruta="modulopagos" nombrede="Modulo Pago"/>
+<x-controllers.create :miArray="$colNames" :miArray2="$modulopagos" :miArray3="$agencias" :miArray4="$formapagos" :miArray5="$tipomovimientos" :miArray6="$tipocolectores" :miArray7="$tipopagos"  ruta="modulopagos" nombrede="Modulo Pago" max="7"/>
 
 </x-base>

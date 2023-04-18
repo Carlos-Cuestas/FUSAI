@@ -9,8 +9,10 @@ class ModuloPago extends Model
 {
     use HasFactory;
 
-    public $timestapms = false;
-
+    public $timestamps = false;
+    protected $guarded = [
+        'id'
+    ];
     public function agencias(){
         return $this -> belongsTo(Agencia::class);
     }

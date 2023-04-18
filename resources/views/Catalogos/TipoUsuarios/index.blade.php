@@ -10,7 +10,7 @@
 
 <hr>
 
-<x-controllers.index :miArray="$colNames" :miArray2="$tipousuarios" ruta="tipousuarios"/>
+<x-controllers.index :miArray="$colNames" :miArray2="$tipousuarios" ruta="tipousuarios" lugarr="tipo"/>
 
 <br>
 <hr>

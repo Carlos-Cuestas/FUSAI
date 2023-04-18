@@ -1,4 +1,4 @@
-@props(['ruta','max'=>null])
+@props(['ruta','max'=>null,'lugarr'=>null])
 
 <x-alert/>
 
@@ -29,6 +29,7 @@
             <!-- Mostrar -->
             @foreach ($attributes['miArray2'] as $table)
                 <tr>
+
                     <form id="myform{{$table->id}}" method="POST" action="{{ route($ruta.'.update', $table->id) }}">
                         @csrf
                         @method('PUT')
@@ -64,7 +65,7 @@
 
 
                                             </select>
-                                            <a href="#" class="link">mostrar</a>
+
                                             <?php
                                                 if ($i==$max) {
                                                      $i =3;
@@ -109,15 +110,22 @@
 
                         @endforeach
 
+                        <input type="text" name="Dia" value="{{date("Y-m-d")}}" hidden>
+                        <input type="text" name="zona" value="{{$lugarr}}" hidden>
+                        <input type="text" name="Tipo" value="editar" hidden>
                     </form>
 
                     <!-- Editar -->
                     <td>
-                        <x-editelimbutt modo="boton" id="{{$table->id}}"/>
+
+                    <x-editelimbutt modo="boton" id="{{$table->id}}" />
+
+
                     </td>
 
                     <!-- Eliminar -->
                     <td class="text-center">
+
                         <x-elimbut tabla="{{$ruta}}" id="{{$table->id}}"/>
                     </td>
 

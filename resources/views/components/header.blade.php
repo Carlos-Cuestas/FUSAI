@@ -13,8 +13,18 @@
           </li>
         </ul>
 
+        <ul class="nav justify-content-start">
+            <li class="nav-item text-center">
+                {{auth()->user()->nombre .' '. auth()->user()->apellido}}
+                <br>
+                <label for="">Cargo:</label>
+                {{auth()->user()->tipousuario->nombre}}
+              </li>
+        </ul>
+
         <ul class="nav justify-content-end">
-            <form class="nav-link" action="{{route("login")}}">
+            <form class="nav-link" action="{{route('session.logout')}}" method="post">
+                @csrf
                 <button type="submit" class="btn border-0 rounded-circle">
                     <img src="/cerrar-sesion.png" height="35px" height="45px">
                 </button>

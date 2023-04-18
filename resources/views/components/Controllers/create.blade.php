@@ -1,4 +1,4 @@
-@props(['ruta','nombrede'])
+@props(['ruta','nombrede','max'=>null])
 
 <?php
 $caracteres = "_id";
@@ -43,7 +43,13 @@ foreach ($attributes['miArray'] as $dato) {
 
 
                         </select>
-                        <?php $i +=1; ?>
+                        <?php
+                            if ($i==$max) {
+                                $i =3;
+                            }else {
+                                $i +=1;
+                            }
+                        ?>
 
 
 
